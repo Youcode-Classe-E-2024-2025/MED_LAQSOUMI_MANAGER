@@ -1,18 +1,15 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'car_rental';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "car_rental";
 
-try {
-    $conn = @new mysqli($host, $user, $pass, $db);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-    return $conn;
-} catch (Exception $e) {
-    echo "Database connection error: " . $e->getMessage();
-    return null;
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+return $conn;
 ?>
